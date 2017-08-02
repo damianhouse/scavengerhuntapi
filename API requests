@@ -1,0 +1,5 @@
+// Sign in
+curl -XPOST -v -H 'Content-Type: application/json' localhost:3000/auth/sign_in -d '{"email": "test@test.com", "password": "testpassword1" }'
+
+// Validate token
+curl -XGET -v -H 'Content-Type: application/json' -H 'access-token: jpmKd6WFtz2z1dj3Wrgzlg' -H 'client: 0R0jcqsoQAZlnRiHAgv46A' -H "uid: test@test.com" localhost:3000/auth/validate_token`
