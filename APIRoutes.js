@@ -10,6 +10,7 @@ After every response the access-token will change and you will have to save it f
 }
 
 let buildURL = (object) => {
+    if(object.model !== "auth" || object.model !== "user" || object.model !== "game" || object.model !== "player" || object.model !== "team" || object.model !== "question" || object.model !== "answer" || object.model !== "score") console.log("You must enter a valid model in the object")
     const siteURL = "www.something.com"
     const APIURL = '/v1/'
     if(object.model === 'auth') {
