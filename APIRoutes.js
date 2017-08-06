@@ -11,7 +11,7 @@ After every response the access-token will change and you will have to save it f
 
 let buildURL = (object) => {
     if(object.model !== "auth" || object.model !== "user" || object.model !== "game" || object.model !== "player" || object.model !== "team" || object.model !== "question" || object.model !== "answer" || object.model !== "score") console.log("You must enter a valid model in the object")
-    const siteURL = "www.something.com"
+    const siteURL = "https://scavengerhuntapi.herokuapp.com"
     const APIURL = '/v1/'
     if(object.model === 'auth') {
         if(object.type === 'sign_in') {
@@ -41,7 +41,7 @@ let buildURL = (object) => {
 const SIGN_IN_HEADERS = {'Content-Type': 'application/json'}
 const SIGN_IN_ROUTE = '/auth/sign_in'
 const HEADERS = {'Content-Type': 'application/json',
-                 'access-token': accessToken,
+                 'access-token': appStore.accessToken,
                  'client': CLIENT,
                  'uid': UID}
 const VALIDATE_TOKEN_ROUTE = '/auth/validate_token'
@@ -84,7 +84,7 @@ const SIGN_IN_ROUTE = '/auth/sign_in'
 // Validate token - No data other than headers
 // This headers constant is what will need to be passed for the rest of the API calls except sign_in and sign_out
 const HEADERS = {'Content-Type': 'application/json',
-                 'access-token': accessToken,
+                 'access-token': appStore.accessToken,
                  'client': CLIENT,
                  'uid': UID}
 const VALIDATE_TOKEN_ROUTE = '/auth/validate_token'
