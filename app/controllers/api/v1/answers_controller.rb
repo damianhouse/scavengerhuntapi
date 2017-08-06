@@ -15,22 +15,22 @@ class AnswersController < ApplicationController
 
   # POST /answers
   def create
-      @answer = Answer.create!(answer_params)
-      if @answer
-        render :show, status: :created, location: v1_answer_url(@answer)
-      else
-        render json: @answer.errors, status: :unprocessable_entity
-      end
+    @answer = Answer.create!(answer_params)
+    if @answer
+      render :show, status: :created, location: v1_answer_url(@answer)
+    else
+      render json: @answer.errors, status: :unprocessable_entity
     end
+  end
 
   # PATCH/PUT /answers/1
   def update
-      if @answer.update(answer_params)
-          render :show, status: :ok, location: v1_answer_url(@answer)
-      else
-          render json: @answer.errors, status: :unprocessable_entity
-      end
+    if @answer.update(answer_params)
+        render :show, status: :ok, location: v1_answer_url(@answer)
+    else
+        render json: @answer.errors, status: :unprocessable_entity
     end
+  end
 
   # DELETE /answers/1
   def destroy
