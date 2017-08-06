@@ -12,9 +12,6 @@ module Api::V1
       render json: @user
     end
 
-    def edit
-    end
-
     def create
       @user = User.create!(user_params)
       if @user

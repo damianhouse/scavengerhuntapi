@@ -2,6 +2,33 @@
 After every response the access-token will change and you will have to save it for the next use
 */
 //All routes/headers
+{
+    model: "user",
+    type: "show",
+    uid: uid
+}
+
+let buildURL = (object) {
+    const siteURL = "www.something.com"
+    const APIURL = '/v1/'
+    if(object.model === 'auth') {
+        if(object.type === 'sign_in') {
+            return siteURL + '/auth/sign_in'
+        } else {
+            return siteURL + '/auth/validate_token'
+        }
+    } else {
+        switch(object.type) {
+            case "index":
+                return siteURL + APIURL + object.model + 's'
+                break;
+            default:
+                return siteURL + APIURL + object.model + '/' + object.uid
+                break;
+        }
+    }
+}
+
 const SIGN_IN_HEADERS = {'Content-Type': 'application/json'}
 const SIGN_IN_ROUTE = '/auth/sign_in'
 const HEADERS = {'Content-Type': 'application/json',
