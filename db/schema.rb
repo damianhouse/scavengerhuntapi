@@ -10,10 +10,74 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801224055) do
+ActiveRecord::Schema.define(version: 20170806203934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "player_id"
+    t.string "image_url"
+    t.string "lat"
+    t.string "long"
+    t.string "answerText"
+    t.boolean "hasItem", default: false
+    t.boolean "verified", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_answers_on_player_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_players_on_team_id"
+    t.index ["user_id"], name: "index_players_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "pointValue", default: 0
+    t.string "questionText"
+    t.boolean "isSponser", default: false
+    t.boolean "isImg", default: false
+    t.boolean "isShortAns", default: false
+    t.boolean "isItem", default: false
+    t.boolean "isVariable", default: false
+    t.boolean "isBonus", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_questions_on_game_id"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "answer_id"
+    t.integer "score", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_scores_on_answer_id"
+    t.index ["team_id"], name: "index_scores_on_team_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.integer "game_id"
+    t.float "score", default: 0.0
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_teams_on_game_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false

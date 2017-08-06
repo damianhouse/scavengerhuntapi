@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :scores
+  resources :answers
+  resources :questions
+  resources :players
+  resources :teams
+  resources :games
   mount_devise_token_auth_for 'User', at: 'auth'
 
   scope module: 'api' do

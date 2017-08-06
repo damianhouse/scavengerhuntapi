@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   # note that this include statement comes AFTER the devise block above
   include DeviseTokenAuth::Concerns::User
+  has_many :players
   validates :name, presence: true
 
 end

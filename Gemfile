@@ -20,6 +20,7 @@ gem 'puma', '~> 3.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'rack-cors'
+gem 'faker'
 # gem 'simple_token_authentication', '~> 1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -32,9 +33,6 @@ gem 'omniauth'
 group :development, :test do
   gem 'rspec-rails', '>= 3.5.0'
   gem 'factory_girl_rails'
-  gem 'pry-rails'
-  gem 'pry-byebug'
-  gem 'pry-stack_explorer'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
