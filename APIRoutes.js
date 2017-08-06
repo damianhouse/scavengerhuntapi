@@ -22,8 +22,15 @@ let buildURL = (object) {
             case "index":
                 return siteURL + APIURL + object.model + 's'
                 break;
+            case "create":
+                return siteURL + APIURL + object.model + 's'
+                break;
             default:
-                return siteURL + APIURL + object.model + '/' + object.uid
+                if(object.uid) {
+                    return siteURL + APIURL + object.model + '/' + object.uid
+                } else {
+                    console.log("You must provide the uid in the user object")
+                }
                 break;
         }
     }
