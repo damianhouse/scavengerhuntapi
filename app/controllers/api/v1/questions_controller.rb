@@ -15,10 +15,9 @@ class QuestionsController < ApplicationController
 
   # POST /questions
   def create
-    @question = Question.new(question_params)
-
-    if @question.save
-      render json: @question, status: :created, location: @question
+    @question = Question.create!(question_params)
+    if @question
+      render :show, status: :created, location: v1_question_url(@question)
     else
       render json: @question.errors, status: :unprocessable_entity
     end
@@ -27,15 +26,16 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   def update
     if @question.update(question_params)
-      render json: @question
+        render :show, status: :ok, location: v1_question_url(@question)
     else
-      render json: @question.errors, status: :unprocessable_entity
+        render json: @question.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /questions/1
   def destroy
     @question.destroy
+    head 204
   end
 
   private

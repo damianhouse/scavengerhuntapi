@@ -15,10 +15,9 @@ class ScoresController < ApplicationController
 
   # POST /scores
   def create
-    @score = Score.new(score_params)
-
-    if @score.save
-      render json: @score, status: :created, location: @score
+    @score = Score.create!(score_params)
+    if @score
+      render :show, status: :created, location: v1_score_url(@score)
     else
       render json: @score.errors, status: :unprocessable_entity
     end
@@ -27,15 +26,16 @@ class ScoresController < ApplicationController
   # PATCH/PUT /scores/1
   def update
     if @score.update(score_params)
-      render json: @score
+        render :show, status: :ok, location: v1_score_url(@score)
     else
-      render json: @score.errors, status: :unprocessable_entity
+        render json: @score.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /scores/1
   def destroy
     @score.destroy
+    head 204
   end
 
   private

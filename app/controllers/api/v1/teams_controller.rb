@@ -15,10 +15,9 @@ class TeamsController < ApplicationController
 
   # POST /teams
   def create
-    @team = Team.new(team_params)
-
-    if @team.save
-      render json: @team, status: :created, location: @team
+    @team = Team.create!(team_params)
+    if @team
+      render :show, status: :created, location: v1_team_url(@team)
     else
       render json: @team.errors, status: :unprocessable_entity
     end
@@ -27,15 +26,16 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1
   def update
     if @team.update(team_params)
-      render json: @team
+        render :show, status: :ok, location: v1_team_url(@team)
     else
-      render json: @team.errors, status: :unprocessable_entity
+        render json: @team.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /teams/1
   def destroy
     @team.destroy
+    head 204
   end
 
   private

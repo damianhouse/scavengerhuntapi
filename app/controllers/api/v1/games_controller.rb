@@ -15,10 +15,9 @@ class GamesController < ApplicationController
 
   # POST /games
   def create
-    @game = Game.new(game_params)
-
-    if @game.save
-      render json: @game, status: :created, location: @game
+    @game = Game.create!(game_params)
+    if @game
+      render :show, status: :created, location: v1_game_url(@game)
     else
       render json: @game.errors, status: :unprocessable_entity
     end
@@ -27,15 +26,16 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1
   def update
     if @game.update(game_params)
-      render json: @game
+        render :show, status: :ok, location: v1_game_url(@game)
     else
-      render json: @game.errors, status: :unprocessable_entity
+        render json: @game.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /games/1
   def destroy
     @game.destroy
+    head 204
   end
 
   private
