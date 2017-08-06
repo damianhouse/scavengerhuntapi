@@ -2,10 +2,11 @@
 After every response the access-token will change and you will have to save it for the next use
 */
 //All routes/headers
+
 {
     model: "user",
     type: "show",
-    uid: 2
+    uid: appStore.uid
 }
 
 let buildURL = (object) => {
