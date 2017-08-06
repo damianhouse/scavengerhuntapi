@@ -5,10 +5,10 @@ After every response the access-token will change and you will have to save it f
 {
     model: "user",
     type: "show",
-    uid: uid
+    uid: 2
 }
 
-let buildURL = (object) {
+let buildURL = (object) => {
     const siteURL = "www.something.com"
     const APIURL = '/v1/'
     if(object.model === 'auth') {
