@@ -1,6 +1,27 @@
 /* Scavenger API routes file
 After every response the access-token will change and you will have to save it for the next use
 */
+//All routes/headers
+const SIGN_IN_HEADERS = {'Content-Type': 'application/json'}
+const SIGN_IN_ROUTE = '/auth/sign_in'
+const HEADERS = {'Content-Type': 'application/json',
+                 'access-token': accessToken,
+                 'client': CLIENT,
+                 'uid': UID}
+const VALIDATE_TOKEN_ROUTE = '/auth/validate_token'
+
+// POST create user
+const SIGN_UP_HEADERS = {'Content-Type': 'application/json'}
+const SIGN_UP_ROUTE = '/v1/users'
+
+// POST Sign up data
+{
+	"email": "test@test.com", 
+	"password": "password",
+	"password_confirmation": "password"
+}
+
+// Expected response 201
 
 // POST Sign in
 const SIGN_IN_HEADERS = {'Content-Type': 'application/json'}
@@ -27,9 +48,9 @@ const SIGN_IN_ROUTE = '/auth/sign_in'
 // Validate token - No data other than headers
 // This headers constant is what will need to be passed for the rest of the API calls except sign_in and sign_out
 const HEADERS = {'Content-Type': 'application/json',
-                                'access-token': accessToken,
-                                'client': CLIENT,
-                                'uid': UID}
+                 'access-token': accessToken,
+                 'client': CLIENT,
+                 'uid': UID}
 const VALIDATE_TOKEN_ROUTE = '/auth/validate_token'
 
 // GET Validate token expected response
