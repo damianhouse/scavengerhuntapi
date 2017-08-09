@@ -1,5 +1,13 @@
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe Score, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+describe Score, type: :model do
+  subject { score }
+
+  let(:score) { build :score }
+
+  describe 'validations' do
+    it { should validate_presence_of(:team_id) }
+    it { should validate_presence_of(:answer_id) }
+  end
 end

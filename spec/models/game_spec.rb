@@ -1,5 +1,12 @@
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe Game, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+describe Game, type: :model do
+  subject { game }
+
+  let(:game) { build :game }
+
+  describe 'validations' do
+    it { should validate_presence_of(:name) }
+  end
 end

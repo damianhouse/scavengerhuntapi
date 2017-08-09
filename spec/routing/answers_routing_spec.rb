@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe AnswersController, type: :routing do
+RSpec.describe Api::V1::AnswersController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do

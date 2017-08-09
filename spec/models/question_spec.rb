@@ -1,5 +1,13 @@
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe Question, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+describe Question, type: :model do
+  subject { question }
+
+  let(:question) { build :question }
+
+  describe 'validations' do
+    it { should validate_presence_of(:questionText) }
+    it { should validate_presence_of(:pointValue) }
+  end
 end
