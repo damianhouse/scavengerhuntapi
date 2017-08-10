@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :question do
-    game_id 1
     pointValue 1
     questionText "MyString"
     isSponser false
@@ -9,5 +8,7 @@ FactoryGirl.define do
     isItem false
     isVariable false
     isBonus false
+
+    game
   end
 end

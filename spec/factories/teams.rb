@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :team do
-    game_id 1
-    score 1
+    score 1234
     name "MyString"
+
+    game
   end
 end

@@ -6,6 +6,9 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |file| require file }
+
 # Add additional requires below this line. Rails is not loaded until this point!
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -40,6 +43,9 @@ end
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
+  config.include Devise::Test::ControllerHelpers
+  config.include Warden::Test::Helpers
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

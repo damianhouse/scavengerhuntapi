@@ -7,7 +7,7 @@ describe Score, type: :model do
   let(:score) { build :score }
 
   describe 'validations' do
-    it { should validate_presence_of(:team_id) }
-    it { should validate_presence_of(:answer_id) }
+    it { should validate_presence_of(:team) }
+    it { should validate_presence_of(:answer) }
   end
 end
