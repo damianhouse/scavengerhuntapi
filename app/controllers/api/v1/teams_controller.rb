@@ -18,7 +18,7 @@ module Api::V1
     def create
       @team = Team.create!(team_params)
       if @team
-        render :show, status: :created, location: v1_team_url(@team)
+        render json: @team
       else
         render json: @team.errors, status: :unprocessable_entity
       end
@@ -27,9 +27,9 @@ module Api::V1
     # PATCH/PUT /teams/1
     def update
       if @team.update(team_params)
-          render :show, status: :ok, location: v1_team_url(@team)
+        render json: @team
       else
-          render json: @team.errors, status: :unprocessable_entity
+        render json: @team.errors, status: :unprocessable_entity
       end
     end
 

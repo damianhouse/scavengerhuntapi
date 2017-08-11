@@ -18,7 +18,7 @@ module Api::V1
     def create
       @score = Score.create!(score_params)
       if @score
-        render :show, status: :created, location: v1_score_url(@score)
+        render json: @score
       else
         render json: @score.errors, status: :unprocessable_entity
       end
@@ -27,9 +27,9 @@ module Api::V1
     # PATCH/PUT /scores/1
     def update
       if @score.update(score_params)
-          render :show, status: :ok, location: v1_score_url(@score)
+        render json: @score
       else
-          render json: @score.errors, status: :unprocessable_entity
+        render json: @score.errors, status: :unprocessable_entity
       end
     end
 

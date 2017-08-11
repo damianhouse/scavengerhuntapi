@@ -18,7 +18,7 @@ module Api::V1
     def create
       @player = Player.create!(player_params)
       if @player
-        render :show, status: :created, location: v1_player_url(@player)
+        render json: @player
       else
         render json: @player.errors, status: :unprocessable_entity
       end
@@ -27,9 +27,9 @@ module Api::V1
     # PATCH/PUT /players/1
     def update
       if @player.update(player_params)
-          render :show, status: :ok, location: v1_player_url(@player)
+        render json: @player
       else
-          render json: @player.errors, status: :unprocessable_entity
+        render json: @player.errors, status: :unprocessable_entity
       end
     end
 

@@ -18,7 +18,7 @@ module Api::V1
     def create
       @question = Question.create!(question_params)
       if @question
-        render :show, status: :created, location: v1_question_url(@question)
+        render json: @question
       else
         render json: @question.errors, status: :unprocessable_entity
       end
@@ -27,9 +27,9 @@ module Api::V1
     # PATCH/PUT /questions/1
     def update
       if @question.update(question_params)
-          render :show, status: :ok, location: v1_question_url(@question)
+        render json: @question
       else
-          render json: @question.errors, status: :unprocessable_entity
+        render json: @question.errors, status: :unprocessable_entity
       end
     end
 
