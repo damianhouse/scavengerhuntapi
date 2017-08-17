@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :answer, class: API::V1::Answer do
+  factory :answer do
     question_id 1
     player_id 1
     image_url "MyString"

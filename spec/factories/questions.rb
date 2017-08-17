@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :question, class: API::V1::Question do
+  factory :question do
     pointValue 1
     questionText "MyString"
     isSponser false

@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :player, class: API::V1::Player do
+  factory :player do
     team
     user
   end

@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :team, class: API::V1::Team do
+  factory :team do
     score 1234
     name "MyString"
 

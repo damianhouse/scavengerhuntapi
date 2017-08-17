@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :game, class: API::V1::Game do
+  factory :game do
     name "MyString"
   end
 end
