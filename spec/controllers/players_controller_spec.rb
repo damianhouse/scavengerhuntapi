@@ -29,7 +29,7 @@ RSpec.describe Api::V1::PlayersController, type: :controller do
   # Player. As you add validations to Player, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    FactoryGirl.build(:player)
   }
 
   let(:invalid_attributes) {

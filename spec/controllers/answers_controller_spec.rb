@@ -29,7 +29,7 @@ RSpec.describe Api::V1::AnswersController, type: :controller do
   # Answer. As you add validations to Answer, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    FactoryGirl.build(:answer)
   }
 
   let(:invalid_attributes) {

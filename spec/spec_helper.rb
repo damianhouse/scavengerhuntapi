@@ -21,7 +21,9 @@ end
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  include Warden::Test::Helpers
   config.include ControllerHelpers, type: :controller
+  
   Warden.test_mode!
 
   config.after do

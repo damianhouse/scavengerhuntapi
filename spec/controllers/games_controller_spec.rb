@@ -29,9 +29,7 @@ RSpec.describe Api::V1::GamesController, type: :controller do
   # Game. As you add validations to Game, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {
-      name: "Cheesecakes"
-    }
+    FactoryGirl.build(:game)
   }
 
   let(:invalid_attributes) {

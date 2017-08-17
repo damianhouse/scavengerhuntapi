@@ -29,7 +29,7 @@ RSpec.describe Api::V1::ScoresController, type: :controller do
   # Score. As you add validations to Score, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    FactoryGirl.build(:score)
   }
 
   let(:invalid_attributes) {

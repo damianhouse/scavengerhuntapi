@@ -29,7 +29,7 @@ RSpec.describe Api::V1::QuestionsController, type: :controller do
   # Question. As you add validations to Question, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    FactoryGirl.build(:question)
   }
 
   let(:invalid_attributes) {
