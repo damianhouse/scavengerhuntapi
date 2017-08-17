@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170806203934) do
+ActiveRecord::Schema.define(version: 20170817003659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20170806203934) do
     t.integer "game_id"
     t.integer "pointValue", default: 0
     t.string "questionText"
-    t.boolean "isSponser", default: false
+    t.boolean "isSponsor", default: false
     t.boolean "isImg", default: false
     t.boolean "isShortAns", default: false
     t.boolean "isItem", default: false
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 20170806203934) do
     t.boolean "isBonus", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "bonusValue"
+    t.integer "questionNumber"
     t.index ["game_id"], name: "index_questions_on_game_id"
   end
 

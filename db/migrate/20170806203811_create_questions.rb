@@ -4,7 +4,7 @@ class CreateQuestions < ActiveRecord::Migration[5.1]
       t.integer :game_id
       t.integer :pointValue, default: 0
       t.string :questionText
-      t.boolean :isSponser, default: false
+      t.boolean :isSponsor, default: false
       t.boolean :isImg, default: false
       t.boolean :isShortAns, default: false
       t.boolean :isItem, default: false
