@@ -2,7 +2,7 @@ class Answer < ApplicationRecord
 	has_many :scores
 	belongs_to :question
 	belongs_to :player
-	validates :question_id, :player_id, :answerText, presence: true
+	validates :question_id, :player_id, presence: true
 	# This method associates the attribute ":image" with a file attachment
 	has_attached_file :image, styles: {
 			thumb: '100x100>',

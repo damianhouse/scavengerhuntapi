@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-game = Game.create!(name: "Cheesecake")
+game = Game.create!(name: "Cheesecake", startTime: Time.now, endTime: Time.now + 1.hour)
 team1 = Team.create!(name: "Team1", game_id: game.id)
 team2 = Team.create!(name: "Team2", game_id: game.id)
 
