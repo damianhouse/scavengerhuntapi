@@ -3,7 +3,6 @@ class CreateAnswers < ActiveRecord::Migration[5.1]
     create_table :answers do |t|
       t.integer :question_id
       t.integer :player_id
-      t.string :image_url
       t.string :lat
       t.string :long
       t.string :answerText

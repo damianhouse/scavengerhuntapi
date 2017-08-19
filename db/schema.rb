@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170819140407) do
+ActiveRecord::Schema.define(version: 20170819175129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20170819140407) do
   create_table "answers", force: :cascade do |t|
     t.integer "question_id"
     t.integer "player_id"
-    t.string "image_url"
     t.string "lat"
     t.string "long"
     t.string "answerText"
@@ -26,6 +25,10 @@ ActiveRecord::Schema.define(version: 20170819140407) do
     t.boolean "verified", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["player_id"], name: "index_answers_on_player_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
