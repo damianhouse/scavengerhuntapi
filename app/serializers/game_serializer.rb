@@ -1,3 +1,3 @@
 class GameSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :startTime, :endTime
 end
