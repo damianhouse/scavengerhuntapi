@@ -8,5 +8,7 @@ describe Game, type: :model do
 
   describe 'validations' do
     it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:startTime) }
+    it { should validate_presence_of(:endTime) }
   end
 end
