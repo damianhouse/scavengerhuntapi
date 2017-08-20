@@ -10,7 +10,8 @@ module Api::V1
 
     # GET /teams/1
     def show
-      render json: @team
+      @answers = @team.answers
+      render json: @team, include: {answers: @answers}
     end
 
     # POST /teams

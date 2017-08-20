@@ -6,6 +6,6 @@ class Team < ApplicationRecord
     validates :name, :game_id, presence: true
 
     def questions
-        @questions = Question.all.map{ |question| question.answers.where(team_id: self.id) ? question.answer.where(team_id: self.id) : question }
+        @questions = Question.all
     end
 end
