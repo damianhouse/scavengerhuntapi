@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
   def last_team
     Player.where(user: self) != [] && Player.where(user: self).last.team ? Player.where(user: self).last.team : nil
   end
+
+  def last_player
+    Player.where(user: self) != [] ? Player.where(user: self) : nil
+  end
 end
