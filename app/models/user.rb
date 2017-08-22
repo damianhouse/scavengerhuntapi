@@ -12,6 +12,6 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   def last_team
-    Player.where(user: self).last.team || nil
+    Player.where(user: self) && Player.where(user: self).last.team ? Player.where(user: self).last.team : nil
   end
 end
