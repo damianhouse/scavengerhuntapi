@@ -11,4 +11,7 @@ class User < ActiveRecord::Base
   has_many :players
   validates :name, presence: true
 
+  def last_team
+    Player.where(user: self).last.team || nil
+  end
 end
