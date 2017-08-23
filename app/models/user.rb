@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :players
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
+  before_save :downcase_email
 
   def last_team
     Player.where(user: self) != [] && Player.where(user: self).last.team ? Player.where(user: self).last.team : nil
@@ -18,5 +19,9 @@ class User < ActiveRecord::Base
 
   def last_player
     Player.where(user: self) != [] ? Player.where(user: self).last : nil
+  end
+
+  def downcase_email
+    self.email.downcase!
   end
 end
