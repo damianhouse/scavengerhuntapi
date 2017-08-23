@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   # note that this include statement comes AFTER the devise block above
   include DeviseTokenAuth::Concerns::User
-  has_many :players
+  has_many :players, dependent: :destroy
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
   before_save :downcase_email
