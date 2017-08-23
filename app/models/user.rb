@@ -10,8 +10,7 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
   has_many :players
   validates :name, presence: true
-  validates :email, uniqueness: true
-
+  validates :email, presence: true, uniqueness: true
 
   def last_team
     Player.where(user: self) != [] && Player.where(user: self).last.team ? Player.where(user: self).last.team : nil
