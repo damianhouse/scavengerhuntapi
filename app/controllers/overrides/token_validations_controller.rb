@@ -5,7 +5,7 @@ module Overrides
       # @resource will have been set by set_user_by_token concern
       if @resource
         render json: {
-          data: @resource.as_json(methods: :last_team_player_and_game_ids)
+          data: @resource.as_json(methods: :last_ids)
         }
       else
         render json: {
