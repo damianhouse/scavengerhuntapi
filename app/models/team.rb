@@ -3,7 +3,7 @@ class Team < ApplicationRecord
     has_many :players, dependent: :destroy
     has_many :scores
     has_many :answers, through: :players
-    validates :name, :game_id, presence: true
+    validates :name, :game_id, :type, presence: true
 
     def questions
         @questions = Question.all
