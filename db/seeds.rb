@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-game = Game.create!(name: "Super Fun Game", startTime: Time.now, endTime: Time.now + 1.hour)
-team1 = Team.create!(name: "Fish sticks", game_id: game.id, type: "family")
-team2 = Team.create!(name: "Tartar sauce", game_id: game.id, type: "corporate")
+game = Game.create!(name: "Cheesecake", startTime: Time.now, endTime: Time.now + 1.hour)
+team1 = Team.create!(name: "Team1", game_id: game.id, teamType: "family")
+team2 = Team.create!(name: "Team2", game_id: game.id, teamType: "corporate")
 
 10.times do |num|
     user = User.create!(email: String(num) + "@gmail.com", password: "password", name: Faker::StarWars.character)
@@ -19,9 +19,9 @@ team2 = Team.create!(name: "Tartar sauce", game_id: game.id, type: "corporate")
 end
 users = User.all
 10.times do |num|
-    question = Question.create!(game_id: game.id, questionText: Faker::StarWars.quote, questionNumber: num, isShortAns: true, isImg: true, isItem: true, pointValue: rand(1..100))
+    question = Question.create!(game_id: game.id, questionText: Faker::StarWars.quote, pointValue: rand(1..100), isImg: true, isShortAns: true, isItem: true, isVariable: true)
     users.each do |user|
-        answer = Answer.create!(question_id: question.id, player_id: user.players[0].id, answerText: Faker::StarWars.quote)
-        Score.create!(team_id: user.players[0].team_id, answer_id: answer.id, score: 100)
+        answer = Answer.create!(question_id: question.id, player_id: user.players.first.id, answerText: Faker::StarWars.quote)
+        Score.create!(team_id: user.players.first.team_id, answer_id: answer.id, score: 100)
     end
 end
