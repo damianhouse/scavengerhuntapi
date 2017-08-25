@@ -5,7 +5,10 @@ module Api::V1
     # GET /teams
     def index
       @teams = Team.all
-      render json: @teams.map {|team| {answers: team.answers}}
+      @teams.each do |team|
+        team, include: {answers: team.answers}
+      end
+      render json: @teams
     end
 
     # GET /teams/1
