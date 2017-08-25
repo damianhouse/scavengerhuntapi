@@ -5,9 +5,6 @@ module Api::V1
     # GET /teams
     def index
       @teams = Team.all
-      @teams.each do |team|
-        team, include: {answers: team.answers}
-      end
       render json: @teams
     end
 
