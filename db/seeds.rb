@@ -20,8 +20,4 @@ end
 users = User.all
 10.times do |num|
     question = Question.create!(game_id: game.id, questionText: Faker::StarWars.quote, pointValue: rand(1..100), questionNumber: "#{num}", isImg: true, isShortAns: true, isItem: true, isVariable: true)
-    users.each do |user|
-        answer = Answer.create!(question_id: question.id, player_id: user.players.first.id, answerText: Faker::StarWars.quote)
-        Score.create!(team_id: user.players.first.team_id, answer_id: answer.id, score: 100)
-    end
 end

@@ -2,7 +2,9 @@ class Answer < ApplicationRecord
 	has_many :scores, dependent: :destroy
 	belongs_to :question
 	belongs_to :player
-	validates :question_id, :player_id, presence: true
+	validates :question_id, :player_id, :team_id, presence: true
+	validate :team_has_only_one_answer_per_question
+
 	# This method associates the attribute ":image" with a file attachment
 	has_attached_file :image, styles: {
 			thumb: '100x100>',
@@ -12,6 +14,12 @@ class Answer < ApplicationRecord
 
 	# Validate the attached image is image/jpg, image/png, etc
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+
+	def team_has_only_one_answer_per_question
+		if Answer.where("question_id = ? AND team_id = ?", self.question_id, self.team_id).exists?
+			errors.add(:team_id, "has already answered this question")
+		end
+	end
 
 	def image_url
 		self.image ? self.image.url : nil
