@@ -2,7 +2,8 @@ class Answer < ApplicationRecord
 	has_many :scores, dependent: :destroy
 	belongs_to :question
 	belongs_to :player
-	validates :question_id, :player_id, :team_id, presence: true
+	belongs_to :game
+	validates :question_id, :player_id, :team_id, :game_id, presence: true
 	validate :team_has_only_one_answer_per_question
 
 	# This method associates the attribute ":image" with a file attachment

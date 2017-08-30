@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829203905) do
+ActiveRecord::Schema.define(version: 20170830232014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 20170829203905) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.integer "team_id"
+    t.string "sponsorImgUrl"
+    t.integer "game_id"
+    t.index ["game_id"], name: "index_answers_on_game_id"
     t.index ["player_id"], name: "index_answers_on_player_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["team_id"], name: "index_answers_on_team_id"
