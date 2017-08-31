@@ -47,7 +47,7 @@ module Api::V1
 
       # Only allow a trusted parameter "white list" through.
       def question_params
-        params.require(:question).permit(:game_id, :pointValue, :questionText, :isSponsor, :isImg, :isShortAns, :isItem, :isVariable, :isBonus, :questionNumber)
+        params.require(:question).permit(:game_id, :pointValue, :questionText, :isSponsor, :sponsorImgUrl, :isImg, :isShortAns, :isItem, :isVariable, :isBonus, :questionNumber)
       end
   end
 end
