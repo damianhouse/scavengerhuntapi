@@ -4,7 +4,7 @@ class Answer < ApplicationRecord
 	belongs_to :player
 	belongs_to :game
 	validates :question_id, :player_id, :team_id, :game_id, presence: true
-	validate :team_has_only_one_answer_per_question
+	validate :team_has_only_one_answer_per_question, on: :create
 
 	# This method associates the attribute ":image" with a file attachment
 	has_attached_file :image, styles: {
