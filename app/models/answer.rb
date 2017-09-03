@@ -5,12 +5,8 @@ class Answer < ApplicationRecord
 	belongs_to :game
 	validates :question_id, :player_id, :team_id, :game_id, presence: true
 	validate :team_has_only_one_answer_per_question, on: :create
-
 	# This method associates the attribute ":image" with a file attachment
 	has_attached_file :image, styles: {
-			thumb: '100x100>',
-			square: '200x200#',
-			medium: '300x300>',
 			original: {convert_options: '-auto-orient'}
 	} 
 
