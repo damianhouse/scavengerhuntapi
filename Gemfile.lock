@@ -68,6 +68,9 @@ GEM
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
     concurrent-ruby (1.0.5)
+    delayed_paperclip (3.0.1)
+      activejob (>= 4.2)
+      paperclip (>= 3.3)
     devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -203,6 +206,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
   aws-sdk (>= 2.0.34)
+  delayed_paperclip
   devise
   devise_token_auth
   factory_girl_rails
