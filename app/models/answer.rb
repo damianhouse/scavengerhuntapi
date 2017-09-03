@@ -9,7 +9,6 @@ class Answer < ApplicationRecord
 	has_attached_file :image, styles: {
 			original: {convert_options: '-auto-orient'}
 	}
-	process_in_background :image
 	# Validate the attached image is image/jpg, image/png, etc
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
