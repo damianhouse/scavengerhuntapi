@@ -29,6 +29,7 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '>= 2.0.34'
 gem "delayed_paperclip"
+gem 'delayed_job_active_record'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 gem 'devise_token_auth'
