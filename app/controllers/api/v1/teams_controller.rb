@@ -46,7 +46,7 @@ module Api::V1
 
       # Only allow a trusted parameter "white list" through.
       def team_params
-        params.require(:team).permit(:game_id, :score, :name, :teamType)
+        params.require(:team).permit(:game_id, :score, :name, :teamType, :sponsorBonus, :latePoints)
       end
   end
 end

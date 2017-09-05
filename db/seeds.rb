@@ -188,7 +188,70 @@ allUsers = [
   {firstName: "Gigi", lastName: "Wainwright-Baker", email: "jeffandgigi@bellsouth.net", teamName: "The Grape Guzzlers", teamType: "adult"},
   {firstName: "Donna", lastName: "Catalini", email: "donna.catalini@gmail.com", teamName: "The Grape Guzzlers", teamType: "adult"},
 ]
-game = Game.create!(name: "Cary Scavenger Hunt 2017", startTime: Time.now + 8.days, endTime: Time.now + 9.days)
+# game = Game.create!(name: "Cary Scavenger Hunt 2017", startTime: Time.now + 8.days, endTime: Time.now + 9.days)
+# # Create array of new objects with name field
+# allUserObjects = allUsers.map { |user| 
+#     name = "user[:firstName]} user[:lastName]}"
+#     {name: name, email: user[:email], password: user[:email], password_confirmation: user[:email], teamName: user[:teamName], teamType: user[:teamType]}
+# }
+# # Create array of unique objects based on email
+# uniqueArray = allUserObjects.uniq { |user| user[:email] }
+
+# # If there are multiple users with the same email set their name to the team name
+# uniqueArray.map.with_index { |user, index| 
+#     userMatches = allUserObjects.find_all {|u| user[:email] === u[:email]}
+#     if userMatches.length > 1 
+#         uniqueArray[index][:name] = user[:teamName]
+#     end
+# }
+
+# # Create array of unique objects based on teamName
+# teams = allUserObjects.uniq { |user| user[:teamName] }
+# # Create teams based on the unique teams
+# teams.map { |user| Team.create!(name: user[:teamName], teamType: user[:teamType], game_id: game.id) }
+
+# # Create users and players
+# uniqueArray.map { |user| 
+#     createdUser = User.create!(name: user[:name], email: user[:email], password: user[:email], password_confirmation: user[:email])
+#     team_id = Team.where("name = ?", user[:teamName])[0].id
+#     Player.create!(user_id: createdUser.id, team_id: team_id)
+# }
+
+# 3.times do |num|
+#     teamName = "Family Walk Up #{num}" 
+#     team = Team.create!(name: teamName, game_id: game.id, teamType: "family")
+#     6.times do |n|
+#         userEmail = "familymember#{n}team#{num}@gmail.com"
+#         user = User.create!(name: "family member #{n}", email: userEmail, password: userEmail, password_confirmation: userEmail)
+#         Player.create!(team_id: team.id, user_id: user.id)
+#     end
+# end
+
+# 3.times do |num|
+#     teamName = "Adult Walk Up #{num}"
+#     team = Team.create!(name: teamName, game_id: game.id, teamType: "adult")
+#     6.times do |n|
+#         userEmail = "adultmember#{n}team#{num}@gmail.com"
+#         user = User.create!(name: "adult member #{n}", email: userEmail, password: userEmail, password_confirmation: userEmail)
+#         Player.create!(team_id: team.id, user_id: user.id)
+#     end
+# end
+
+
+# Old Seeds
+
+game = Game.create!(name: "Cheesecake", startTime: Time.now, endTime: Time.now + 1.hour)
+team1 = Team.create!(name: "Team1", game_id: game.id, teamType: "family")
+team2 = Team.create!(name: "Team2", game_id: game.id, teamType: "corporate")
+
+10.times do |num|
+    user = User.create!(email: String(num) + "@gmail.com", password: "password", name: Faker::StarWars.character)
+    if num < 5
+        Player.create!(team_id: team1.id, user_id: user.id)
+    else
+        Player.create!(team_id: team2.id, user_id: user.id)
+    end
+end
 
 Question.create!("game_id": 1, "questionNumber": "1", "questionText": "Kramden Institute refurbishes used computers and laptops and donates them to kids without access at home. They accept laptops, LCD monitors, hard drives, cellphones and peripherals. Did you bring any donations this morning? LOG 'GOT IT' and show judge your tax receipt for points  CAPPED at 500 pts", "isImg": false, "isShortAns": false, "isItem": true, "pointValue": 0, "isSponsor": false, "sponsorImgURL": "https://s3.amazonaws.com/csh17/sponsors/gold/kramden.jpg", "isVariable": true)
 Question.create!("game_id": 1, "questionNumber": "2", "questionText": "Dorcas Ministries operates a very successful food pantry right here in Cary. Did you drop off non-perishables today at Morning Check-in? Log  'GOT IT' in the app and show the judge the receipt for points at the finish.", "isImg": false, "isShortAns": false, "isItem": true, "pointValue": 0, "isSponsor": false, "sponsorImgURL": "https://s3.amazonaws.com/csh17/sponsors/silver/dorcas.jpg", "isVariable": true)
@@ -263,50 +326,3 @@ Question.create!("game_id": 1, "questionNumber": "63", "questionText": "Our art 
 Question.create!("game_id": 1, "questionNumber": "64", "questionText": "Go Cary is the new name of our award-winning transit system founded in 2005 and formerly known as CTran.  It also provides door-to-door service for seniors and the disabled. Find a GoCary schedule today LOG 'Got IT' and show to judge", "isImg": false, "isShortAns": false, "isItem": true, "pointValue": 50, "isSponsor": false, "sponsorImgURL": "", "isVariable": false)
 Question.create!("game_id": 1, "questionNumber": "65", "questionText": "This high school's motto has a torch and a book. Find the historic marker and give it a look. What are the Latin words? LOG THE ANSWER in your App", "isImg": false, "isShortAns": true, "isItem": false, "pointValue": 110, "isSponsor": false, "sponsorImgURL": "", "isVariable": false)
 
-# Create array of new objects with name field
-allUserObjects = allUsers.map { |user| 
-    name = "user[:firstName]} user[:lastName]}"
-    {name: name, email: user[:email], password: user[:email], password_confirmation: user[:email], teamName: user[:teamName], teamType: user[:teamType]}
-}
-# Create array of unique objects based on email
-uniqueArray = allUserObjects.uniq { |user| user[:email] }
-
-# If there are multiple users with the same email set their name to the team name
-uniqueArray.map.with_index { |user, index| 
-    userMatches = allUserObjects.find_all {|u| user[:email] === u[:email]}
-    if userMatches.length > 1 
-        uniqueArray[index][:name] = user[:teamName]
-    end
-}
-
-# Create array of unique objects based on teamName
-teams = allUserObjects.uniq { |user| user[:teamName] }
-# Create teams based on the unique teams
-teams.map { |user| Team.create!(name: user[:teamName], teamType: user[:teamType], game_id: game.id) }
-
-# Create users and players
-uniqueArray.map { |user| 
-    createdUser = User.create!(name: user[:name], email: user[:email], password: user[:email], password_confirmation: user[:email])
-    team_id = Team.where("name = ?", user[:teamName])[0].id
-    Player.create!(user_id: createdUser.id, team_id: team_id)
-}
-
-3.times do |num|
-    teamName = "Family Walk Up #{num}" 
-    team = Team.create!(name: teamName, game_id: game.id, teamType: "family")
-    6.times do |n|
-        userEmail = "familymember#{n}team#{num}@gmail.com"
-        user = User.create!(name: "family member #{n}", email: userEmail, password: userEmail, password_confirmation: userEmail)
-        Player.create!(team_id: team.id, user_id: user.id)
-    end
-end
-
-3.times do |num|
-    teamName = "Adult Walk Up #{num}"
-    team = Team.create!(name: teamName, game_id: game.id, teamType: "adult")
-    6.times do |n|
-        userEmail = "adultmember#{n}team#{num}@gmail.com"
-        user = User.create!(name: "adult member #{n}", email: userEmail, password: userEmail, password_confirmation: userEmail)
-        Player.create!(team_id: team.id, user_id: user.id)
-    end
-end
