@@ -15,4 +15,6 @@ Rails.application.routes.draw do
       resources :games
     end
   end
+
+  get '/loaderio-26c68ba7740d110c9198c27f4af68f5a', to: 'loadtester#index'
 end
