@@ -5,12 +5,12 @@ module Api::V1
     # GET /teams
     def index
       @teams = Team.all
-      render json: @teams
+      render json: @teams, each_serializer: serializer_method
     end
 
     # GET /teams/1
     def show
-      render json: @team, include: {answers: @team.answers}
+      render json: @team, include: {answers: @team.answers}, each_serializer: serializer_method
     end
 
     # POST /teams
@@ -39,6 +39,9 @@ module Api::V1
     end
 
     private
+      def serializer_method
+          defined?(@teams) ? TeamsSerializer : TeamSerializer
+      end
       # Use callbacks to share common setup or constraints between actions.
       def set_team
         @team = Team.find(params[:id])
