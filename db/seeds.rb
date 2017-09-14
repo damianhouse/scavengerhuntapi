@@ -1,13 +1,16 @@
 game = Game.create!(name: "Cheesecake", startTime: Time.now, endTime: Time.now + 1.hour)
-team1 = Team.create!(name: "Team1", game_id: game.id, teamType: "family")
-team2 = Team.create!(name: "Team2", game_id: game.id, teamType: "corporate")
+# team1 = Team.create!(name: "Team1", game_id: game.id, teamType: "family")
+# team2 = Team.create!(name: "Team2", game_id: game.id, teamType: "corporate")
 
-10.times do |num|
-    user = User.create!(email: String(num) + "@gmail.com", password: "password", name: Faker::StarWars.character)
-    if num < 5
-        Player.create!(team_id: team1.id, user_id: user.id)
-    else
-        Player.create!(team_id: team2.id, user_id: user.id)
+20.times do |n|
+    team = Team.create!(name: "Team#{n}", game_id: game.id, teamType: "family")
+    6.times do |num|
+        user = User.create!(email: "#{n}#{num * num}" + "@gmail.com", password: "password", name: Faker::StarWars.character)
+        if num % 2 == 0
+            Player.create!(team_id: team.id, user_id: user.id)
+        else
+            Player.create!(team_id: team.id, user_id: user.id)
+        end
     end
 end
 

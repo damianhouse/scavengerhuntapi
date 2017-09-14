@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.3.1'
+ruby '2.3.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
 # Use postgresql as the database for Active Record
@@ -20,21 +20,22 @@ gem 'puma', '~> 3.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'rack-cors'
-gem 'faker'
 # gem 'simple_token_authentication', '~> 1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'active_model_serializers', '~> 0.10.0'
 # Paperclip handles image transfer to S3
 gem "paperclip", "~> 5.0.0"
-gem 'aws-sdk', '>= 2.0.34'
-gem "delayed_paperclip"
-gem 'delayed_job_active_record'
+gem 'aws-sdk'
+# gem "delayed_paperclip"
+# gem 'delayed_job_active_record'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 gem 'devise_token_auth'
 gem 'omniauth'
 group :development, :test do
+  gem 'derailed'
+  gem 'faker'
   gem 'rspec-rails', '>= 3.5.0'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
