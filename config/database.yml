@@ -1,4 +1,4 @@
-# PostgreSQL. Versions 9.1 and up are supported.
+  # PostgreSQL. Versions 9.1 and up are supported.
 #
 # Install the pg driver:
 #   gem install pg
@@ -82,4 +82,4 @@ production:
   <<: *default
   database: scavengerapi_production
   username: scavengerapi
-  password: <%= ENV['SCAVENGERAPI_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DATABASE_URL'] %>
